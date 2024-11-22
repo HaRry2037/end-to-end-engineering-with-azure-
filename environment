@@ -1,0 +1,34 @@
+# Java tuning
+#DRUID_XMX=1g
+#DRUID_XMS=1g
+#DRUID_MAXNEWSIZE=250M
+#DRUID_NEWSIZE=250M
+#DRUID_MAXDIRECTMEMORYSIZE=6172M
+
+DRUID_SINGLE_NODE_CONF=micro-quickstart
+
+druid_emitter_logging_logLevel=debug
+
+druid_extensions_loadList=["druid-histogram","druid-datasketches","druid-lookups-cached-global","postgresql-metadata-storage","druid-multi-stage-query","druid-kafka-indexing-service"]
+
+druid_zk_service_host=zookeeper
+
+druid_metadata_storage_host=postgres
+druid_metadata_storage_type=postgresql
+
+druid_metadata_storage_connector_connectURI=jdbc:postgresql://postgres:5432/druid?user=druid&password=SuperStrongPassword
+druid_metadata_storage_connector_user=druid
+druid_metadata_storage_connector_password=SuperStrongPassword
+
+druid_indexer_runner_javaOptsArray=["-server","-Xmx1g","-Xms1g","XX:MaxDirectMemorySize=3g","Duser.timezone=UTC","-Dfile.encoding=UTF-8","-Djava.util.logging"]
+druid_indexed_fork_property_druid_processing_buffer_sizeBytes=256MiB
+
+druid_storage_type=local
+druid_storage_storageDirectory=/opt/shared/segments
+druid_indexer_logs_type=file
+druid_indexer_logs_directory=/opt/shared/indexing-logs
+
+druid_processing_numThreads=2
+druid_processing_numMergeBuffers=2
+
+DRUID_LOG4J=<?xml version="1.0" encoding="UTF-8"?><Configuration status="WARN"><Appenders><Console name="Console" target="SYSTEM_OUT"><PatternLayout pattern="%d{ISO8601} [%t] %-5level %logger{36} - %msg%n"/></Console><RollingFile name="File" fileName="/opt/shared/logs/druid.log" filePattern="/opt/shared/logs/druid-%d{yyyy-MM-dd}-%i.log.gz"><PatternLayout pattern="%d{ISO8601} [%t] %-5level %logger{36} - %msg%n"/></RollingFile></Appenders><Loggers><Root level="info"><AppenderRef ref="Console"/><AppenderRef ref="File"/></Root><Logger name="org.apache.druid" level="debug" additivity="false"><AppenderRef ref="Console"/></Logger></Loggers></Configuration>
