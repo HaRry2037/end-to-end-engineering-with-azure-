@@ -2,9 +2,9 @@ import json
 from azure.eventhub import EventHubConsumerClient
 
 # Azure Event Hub connection details
-connection_str = "Endpoint=sb://druidevent1.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=9SPwe6obP/vQMmSljB369kULZF89O6NfM+AEhNS3g9w="
-eventhub_name = "ecommerce-events"  # The name of your Event Hub
-consumer_group = "$Default"  # The consumer group name. Change if using a custom consumer group.
+connection_str = ""
+eventhub_name = ""  # The name of your Event Hub
+consumer_group = ""  # The consumer group name. Change if using a custom consumer group.
 
 # Callback function for processing received events
 def on_event(partition_context, event):
